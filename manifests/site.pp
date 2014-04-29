@@ -87,4 +87,65 @@ node default {
     ensure => link,
     target => $boxen::config::repodir
   }
+
+  include vlc
+  include osx::dock::autohide
+  include osx::finder::show_all_on_desktop
+  include osx::finder::show_hidden_files
+  include osx::finder::enable_quicklook_text_selection
+  include osx::disable_app_quarantine
+  include osx::no_network_dsstores 
+  include osx::software_update
+  include virtualbox
+  include wget
+  include osxfuse
+  include chrome
+  include firefox
+  include tmux
+  include vagrant
+  include phantomjs
+  include gpgtools
+  include adobe_reader
+  include quicksilver
+  include evernote
+  include chicken_of_the_vnc
+  include skype 
+  include adium
+  include dropbox
+  include picasa
+  include dockutil
+  include keepassx
+  include googledrive
+  #include php::5_4
+  #include php::composer
+  include autoconf
+  include libtool
+  include pcre
+  include libpng
+  #include mysql
+  include spf13vim3
+  include vim
+
+  package {'openconnect':
+    ensure => present,
+  }
+
+  dockutil::item {'Add iTerm':
+    item  => "/Applications/iTerm.app",
+    label => "iTerm",
+    action => "add",
+    position => 2,
+  }
+
+  dockutil::item {'Add Chrome':
+    item  => "/Applications/Google Chrome.app",
+    label => "Google Chrome",
+    action => "add",
+    position => 3,
+  }
+
+  package {'computracce':
+    source => "http://artifactory.ctlt.ubc.ca/artifactory/ctlt-release-local/Computrace/RPClient.pkg.zip",
+    provider => 'compressed_pkg',
+  }
 }

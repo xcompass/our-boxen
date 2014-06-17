@@ -123,7 +123,7 @@ node default {
   include libtool
   include pcre
   include libpng
-  #include mysql
+  include mysql
   include spf13vim3
   include vim
   include msoffice
@@ -148,7 +148,8 @@ node default {
   }
 
   package {'xerox_driver':
-    source   => 'http://download.support.xerox.com/pub/drivers/CQ8570/drivers/macosx107/pt_BR/XeroxPrintDriver.3.16.0_1313.dmg',
+    #source   => 'http://download.support.xerox.com/pub/drivers/CQ8570/drivers/macosx107/pt_BR/XeroxPrintDriver.3.16.0_1313.dmg',
+    source   => 'http://download.support.xerox.com/pub/drivers/WC780X/drivers/macosx106/pt_BR/XeroxPrintDriver3.11.0_1278.dmg',
     provider => 'pkgdmg'
   }
 

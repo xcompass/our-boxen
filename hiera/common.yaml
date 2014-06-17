@@ -1,0 +1,29 @@
+---
+# This is an example of the kinds of things that you can configure via hiera.
+# If you've left the defaults in `/hiera.yml`, you might want to copy this file
+# to `hiera/common.yaml`, or feel free to start with a blank slate!
+
+# Have a gander at some of these examples to get an idea of some of the things
+# that you can affect 'out of the box', and then customise to your
+# heart's content.
+
+printers:
+  'CTLT_Photocopier_102':
+    ensure: 'present'
+    accept: true
+    description: 'CTLT Photocopier 102'
+    enabled: true
+    location: 'IKBLC Room 102'
+    uri: 'ipp://137.82.12.70/'
+    #ppd: '/Library/Printers/PPDs/Contents/Resources/Xerox ColorQube 9203.gz'
+    ppd: '/Library/Printers/PPDs/Contents/Resources/Xerox WorkCentre 7845.gz'
+    ppd_options:
+      DefaultXRTrays: 'FiveTraysHCTT'
+      DefaultXRFinisher: 'SBFinisher'
+      DefaultXRHolePunch: '23Unit'
+      DefaultXRLanFax: 'True'
+
+msoffice::username: ctlt
+msoffice::password: frogleg
+computrace::username: ctlt
+computrace::password: frogleg

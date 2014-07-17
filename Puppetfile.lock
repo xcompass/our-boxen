@@ -1,16 +1,16 @@
 GIT
   remote: https://github.com/mosen/puppet-cups.git
   ref: master
-  sha: f36d038f398da5b70a4d7d805b3e1a9e060763bf
+  sha: 3ff4f781630f8a8ea5cf17c51b1ca4bfa79f51c1
   specs:
-    cups (1.4.0-RC1)
+    mosen/cups (1.4.0-RC1)
 
 GIT
   remote: https://github.com/xcompass/puppet-vim.git
   ref: master
-  sha: 1f39029e19799577602b0bc288ddfcd475379017
+  sha: a1ecbaee217e1b4851a0ae8c916cf335f1cb0e82
   specs:
-    vim (0.0.1)
+    xcompass/vim (0.0.1)
 
 GITHUBTARBALL
   remote: boxen/puppet-adium
@@ -275,7 +275,6 @@ DEPENDENCIES
   chicken_of_the_vnc (= 0.1.2)
   chrome (= 1.1.2)
   computrace (= 1.0.0)
-  cups (>= 0)
   dnsmasq (= 1.0.1)
   dockutil (= 0.1.2)
   dropbox (= 1.2.0)
@@ -294,6 +293,7 @@ DEPENDENCIES
   libpng (= 1.0.0)
   libtool (= 1.0.0)
   module-data (= 0.0.3)
+  mosen/cups (>= 0)
   msoffice (= 1.0.0)
   mysql (= 1.2.0)
   nginx (= 1.4.3)
@@ -317,9 +317,9 @@ DEPENDENCIES
   sudo (= 1.0.0)
   tmux (= 1.0.2)
   vagrant (= 3.0.7)
-  vim (>= 0)
   virtualbox (= 1.0.11)
   vlc (= 1.1.0)
   wget (= 1.0.1)
+  xcompass/vim (>= 0)
   xquartz (= 1.1.1)
 

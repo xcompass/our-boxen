@@ -27,5 +27,7 @@ class people::xcompass{
       provider => compressed_app;
   }
 
+  include go
+  include go::1_3
   include projects::all
 }

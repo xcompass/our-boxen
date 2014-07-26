@@ -118,8 +118,8 @@ node default {
   include dockutil
   include keepassx
   include googledrive
-  #include php::5_4
-  #include php::composer
+  include php::5_4_17
+  include php::composer
   include autoconf
   include libtool
   include pcre
@@ -160,4 +160,11 @@ node default {
 
   $printers = hiera('printers', {})
   create_resources(printer, $printers)
+
+  #include php::fpm::5_4_17
+
+  # doesn't work
+  #php::extension::apc { "apc for 5.4":
+  #  php => '5.4',
+  #}
 }

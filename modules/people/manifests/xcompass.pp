@@ -23,11 +23,17 @@ class people::xcompass{
       source => "https://dl.google.com/dl/androidjumper/mtp/current/androidfiletransfer.dmg",
       provider => appdmg;
     'SQLiteBrowser':
-      source => "http://jaist.dl.sourceforge.net/project/sqlitebrowser/sqlitebrowser/2.0%20beta1/sqlitebrowser_200_b1_osx.zip",
+      source   => 'http://jaist.dl.sourceforge.net/project/sqlitebrowser/sqlitebrowser/2.0%20beta1/sqlitebrowser_200_b1_osx.zip',
       provider => compressed_app;
+    'FileZilla':
+      source   => 'http://downloads.sourceforge.net/project/filezilla/FileZilla_Client/3.9.0.2/FileZilla_3.9.0.2_macosx-x86.app.tar.bz2?r=&ts=1406843417&use_mirror=iweb',
+      flavor => 'tar.bz2',
+      provider => compressed_app;
+    'ffmpeg':
+      ensure => presetn,
   }
 
   include go
-  include go::1_3
+  go::version { '1.3': }
   include projects::all
 }

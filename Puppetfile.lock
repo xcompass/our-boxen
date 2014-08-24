@@ -3,14 +3,14 @@ GIT
   ref: master
   sha: 3ff4f781630f8a8ea5cf17c51b1ca4bfa79f51c1
   specs:
-    mosen/cups (1.4.0-RC1)
+    mosen-cups (1.4.0-RC1)
 
 GIT
   remote: https://github.com/xcompass/puppet-vim.git
   ref: master
   sha: a1ecbaee217e1b4851a0ae8c916cf335f1cb0e82
   specs:
-    xcompass/vim (0.0.1)
+    xcompass-vim (0.0.1)
 
 GITHUBTARBALL
   remote: boxen/puppet-adium
@@ -31,16 +31,6 @@ GITHUBTARBALL
   remote: boxen/puppet-boxen
   specs:
     boxen (3.6.2)
-
-GITHUBTARBALL
-  remote: boxen/puppet-chicken_of_the_vnc
-  specs:
-    chicken_of_the_vnc (0.1.2)
-
-GITHUBTARBALL
-  remote: boxen/puppet-chrome
-  specs:
-    chrome (1.1.2)
 
 GITHUBTARBALL
   remote: boxen/puppet-chicken_of_the_vnc
@@ -208,11 +198,6 @@ GITHUBTARBALL
     skype (1.0.8)
 
 GITHUBTARBALL
-  remote: boxen/puppet-skype
-  specs:
-    skype (1.0.8)
-
-GITHUBTARBALL
   remote: boxen/puppet-sudo
   specs:
     sudo (1.0.0)
@@ -299,6 +284,7 @@ DEPENDENCIES
   gcc (= 2.1.1)
   git (= 2.5.0)
   go (= 1.1.0)
+  go (>= 0)
   googledrive (= 1.0.2)
   gpgtools (= 0.1.1)
   homebrew (= 1.9.4)
@@ -308,9 +294,9 @@ DEPENDENCIES
   libpng (= 1.0.0)
   libtool (= 1.0.0)
   module-data (= 0.0.3)
-  mosen/cups (>= 0)
+  mosen-cups (>= 0)
   msoffice (= 1.0.0)
-  mysql (= 1.2.0)
+  mysql (>= 0)
   nginx (= 1.4.3)
   nodejs (= 3.8.1)
   openssl (= 1.0.0)
@@ -319,7 +305,7 @@ DEPENDENCIES
   pcre (= 1.0.0)
   phantomjs (= 2.3.0)
   phantomjs (= 2.3.0)
-  php (= 1.2.0)
+  php (>= 0)
   picasa (= 1.0.0)
   pkgconfig (= 1.0.0)
   python (= 2.0.1)
@@ -335,6 +321,6 @@ DEPENDENCIES
   virtualbox (= 1.0.11)
   vlc (= 1.1.0)
   wget (= 1.0.1)
-  xcompass/vim (>= 0)
+  xcompass-vim (>= 0)
   xquartz (= 1.1.1)
 

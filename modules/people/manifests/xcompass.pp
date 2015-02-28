@@ -30,10 +30,10 @@ class people::xcompass{
       flavor => 'tar.bz2',
       provider => compressed_app;
     'ffmpeg':
-      ensure => presetn,
+      ensure => present,
   }
 
-  include go
-  go::version { '1.3': }
+#  include go
+#  go::version { '1.4': }
   include projects::all
 }

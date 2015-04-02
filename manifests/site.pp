@@ -71,9 +71,9 @@ node default {
   # default ruby versions
   ruby::version { '1.8.7': }
   ruby::version { '1.9.3': }
-  ruby::version { '2.0.0': }
-  ruby::version { '2.1.0': }
-  ruby::version { '2.1.1': }
+#  ruby::version { '2.0.0': }
+#  ruby::version { '2.1.0': }
+#  ruby::version { '2.1.1': }
   ruby::version { '2.1.2': }
 
   # common, useful packages
@@ -119,7 +119,7 @@ node default {
   include keepassx
   include googledrive
   include php::5_4_17
-  include php::composer
+  #include php::composer
   include autoconf
   include libtool
   include pcre
@@ -164,7 +164,10 @@ node default {
   #include php::fpm::5_4_17
 
   # doesn't work
-  #php::extension::apc { "apc for 5.4":
-  #  php => '5.4',
-  #}
+  php::extension::apc { "apc for 5.4.17":
+    php => '5.4.17',
+  }
+
+  package { ['php54-apc', 'php54-redis']: }
+  package {'redis': }
 }

@@ -1,9 +1,9 @@
 class projects::phpmyadmin {
-  php::project { 'phpmyadmin':
+  boxen::project { 'phpmyadmin':
     dir           => '/Users/compass/projects/phpMyAdmin',
     source        => 'phpmyadmin/phpmyadmin',
     mysql         => false,
-    nginx         => 'projects/shared/root.nginx.conf.erb',
-    php           => '5.4.17',
+    #nginx         => 'projects/shared/root.nginx.conf.erb',
+    #php           => '5.5.13',
   }
 }

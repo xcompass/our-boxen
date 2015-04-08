@@ -1,10 +1,10 @@
 class projects::ipeer {
-  php::project { 'ipeer':
+  boxen::project { 'ipeer':
     dir           => '/Users/compass/projects/ipeer/src',
     source        => 'ubc/ipeer',
     mysql         => true,
-    nginx         => 'projects/shared/ipeer.nginx.conf.erb',
-    php           => '5.4.17',
+    #nginx         => 'projects/shared/ipeer.nginx.conf.erb',
+    #php           => '5.5.13',
   }
 
   mysql::user { 'ipeer':

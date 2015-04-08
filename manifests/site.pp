@@ -74,7 +74,7 @@ node default {
 #  ruby::version { '2.0.0': }
 #  ruby::version { '2.1.0': }
 #  ruby::version { '2.1.1': }
-  ruby::version { '2.1.2': }
+#  ruby::version { '2.1.2': }
 
   # common, useful packages
   package {
@@ -100,25 +100,18 @@ node default {
   include osx::software_update
   include virtualbox
   include wget
-  include osxfuse
   include chrome
-  include firefox
-  include tmux
   include vagrant
   include phantomjs
   include gpgtools
   include adobe_reader
   include quicksilver
   include evernote
-  include chicken_of_the_vnc
   include skype
   include adium
   include dropbox
   include picasa
   include dockutil
-  include keepassx
-  include googledrive
-  include php::5_4_17
   #include php::composer
   include autoconf
   include libtool
@@ -149,8 +142,8 @@ node default {
   }
 
   package {'xerox_driver':
-    #source   => 'http://download.support.xerox.com/pub/drivers/CQ8570/drivers/macosx107/pt_BR/XeroxPrintDriver.3.16.0_1313.dmg',
-    source   => 'http://download.support.xerox.com/pub/drivers/WC780X/drivers/macosx106/pt_BR/XeroxPrintDriver3.11.0_1278.dmg',
+    #source   => 'http://download.support.xerox.com/pub/drivers/WC780X/drivers/macosx106/pt_BR/XeroxPrintDriver3.11.0_1278.dmg',
+    source   => 'http://download.support.xerox.com/pub/drivers/CQ8570/drivers/macosx107/pt_BR/XeroxPrintDriver.3.52.0_1481.dmg',
     provider => 'pkgdmg'
   }
 
@@ -164,10 +157,25 @@ node default {
   #include php::fpm::5_4_17
 
   # doesn't work
-  php::extension::apc { "apc for 5.4.17":
-    php => '5.4.17',
-  }
+  #php::extension::apc { "apc for 5.4.17":
+  #  php => '5.4.17',
+  #}
 
+  homebrew::tap { ['homebrew/dupes']: }
+
+  package { 'php54':}
   package { ['php54-apc', 'php54-redis']: }
   package {'redis': }
+
+  vagrant::plugin {[
+  'vagrant-hostmanager',
+  'vagrant-vbox-snapshot',
+  'vagrant-vbguest'
+  ]:}
+
+  file { '/usr/bin/vi':
+    ensure => link,
+    target => '/opt/boxen/homebrew/bin/vim',
+    require => Package['vim']
+  }
 }

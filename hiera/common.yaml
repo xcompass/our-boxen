@@ -31,3 +31,7 @@ computrace::password: frogleg
 # Use default ports for databases
 mysql::config::port: 3306
 postgresql::port: 5432
+
+nodejs::version::alias:
+    0.10: "0.10.36"
+    0.12: "0.12.0"

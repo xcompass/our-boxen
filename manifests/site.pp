@@ -64,9 +64,14 @@ node default {
   }
 
   # node versions
-  nodejs::version { 'v0.6': }
-  nodejs::version { 'v0.8': }
-  nodejs::version { 'v0.10': }
+  class { 'nodejs::global':
+    version => '0.12'
+  }
+  npm_module { 'bower for all nodes':
+    module       => 'bower',
+    version      => '~> 1.4.1',
+    node_version => '*',
+  }
 
   # default ruby versions
   ruby::version { '1.8.7': }

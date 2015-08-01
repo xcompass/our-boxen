@@ -46,9 +46,12 @@ class people::xcompass{
     'Firefox':
       source => 'http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/latest/mac/en-US/Firefox%2037.0.1.dmg',
       provider => 'appdmg';
+    'Gnucash':
+      source => 'http://downloads.sourceforge.net/project/gnucash/gnucash%20%28stable%29/2.6.6/Gnucash-Intel-2.6.6-5.dmg',
+      provider => 'appdmg';
   }
 
-  package { ['tmux', 'autoenv']: }
+  package { ['tmux', 'autoenv', 'bash']: }
 #  include go
 #  go::version { '1.4': }
 
@@ -106,4 +109,11 @@ class people::xcompass{
   }
 
   include projects::all
+
+  # setup /etc/profile to clear PATH before run path_helper
+  # otherwise tmux will source path_helper twice and mess up pyenv path
+  file {'/etc/profile':
+    ensure => present,
+    source => 'puppet:///modules/people/profile'
+  }
 }

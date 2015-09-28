@@ -44,14 +44,17 @@ class people::xcompass{
       source => 'http://downloads.sourceforge.net/project/osxfuse/osxfuse-2.7.5/osxfuse-2.7.5.dmg',
       provider => pkgdmg;
     'Firefox':
-      source => 'http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/latest/mac/en-US/Firefox%2037.0.1.dmg',
+      source => 'http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/latest/mac/en-US/Firefox%2039.0.3.dmg',
       provider => 'appdmg';
     'Gnucash':
       source => 'http://downloads.sourceforge.net/project/gnucash/gnucash%20%28stable%29/2.6.6/Gnucash-Intel-2.6.6-5.dmg',
       provider => 'appdmg';
+    'GIMP':
+      source => 'http://download.gimp.org/pub/gimp/v2.8/osx/gimp-2.8.14.dmg',
+      provider => 'appdmg';
   }
 
-  package { ['tmux', 'autoenv', 'bash']: }
+  package { ['tmux', 'autoenv', 'bash', 'wrk']: }
 #  include go
 #  go::version { '1.4': }
 
@@ -59,6 +62,7 @@ class people::xcompass{
   include osx::global::enable_standard_function_keys
   include osx::global::expand_print_dialog
   include osx::global::expand_save_dialog
+  include osx::global::disable_remote_control_ir_receiver
   include osx::global::tap_to_click
   include osx::dock::autohide
   include osx::dock::dim_hidden_apps
@@ -70,6 +74,7 @@ class people::xcompass{
   include osx::finder::show_all_filename_extensions
   include osx::safari::enable_developer_mode
   include osx::no_network_dsstores
+  include osx::disable_app_quarantine
 
   $python_global = 2.7
   class { 'python::global':

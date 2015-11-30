@@ -54,7 +54,7 @@ class people::xcompass{
       provider => 'appdmg';
   }
 
-  package { ['tmux', 'autoenv', 'bash', 'wrk']: }
+  package { ['tmux', 'autoenv', 'bash', 'wrk', 'gradle']: }
 #  include go
 #  go::version { '1.4': }
 

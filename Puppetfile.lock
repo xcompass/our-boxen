@@ -121,12 +121,12 @@ GITHUBTARBALL
 GITHUBTARBALL
   remote: boxen/puppet-mysql
   specs:
-    mysql (2.1.2)
+    mysql (2.2.0)
 
 GITHUBTARBALL
   remote: boxen/puppet-nginx
   specs:
-    nginx (1.4.6)
+    nginx (1.6.0)
 
 GITHUBTARBALL
   remote: boxen/puppet-nodejs
@@ -186,7 +186,7 @@ GITHUBTARBALL
 GITHUBTARBALL
   remote: boxen/puppet-ruby
   specs:
-    ruby (8.5.2)
+    ruby (8.5.3)
 
 GITHUBTARBALL
   remote: boxen/puppet-skype
@@ -286,7 +286,7 @@ DEPENDENCIES
   mosen-cups (>= 0)
   msoffice (= 1.0.0)
   mysql (>= 0)
-  nginx (= 1.4.6)
+  nginx (= 1.6.0)
   nodejs (= 5.0.0)
   openssl (= 1.0.0)
   osx (>= 0)
@@ -300,7 +300,7 @@ DEPENDENCIES
   quicksilver (>= 0)
   redis (= 3.1.0)
   repository (= 2.4.1)
-  ruby (= 8.5.2)
+  ruby (= 8.5.3)
   skype (>= 0)
   spf13vim3 (= 1.0.0)
   stdlib (= 4.7.0)

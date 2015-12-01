@@ -109,7 +109,6 @@ node default {
   include phantomjs
   include gpgtools
   include adobe_reader
-  include quicksilver
   include evernote
   include skype
   include adium

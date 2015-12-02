@@ -52,13 +52,17 @@ class people::xcompass{
       provider => 'appdmg';
     'PyCharm':
       provider => 'appdmg',
-      source   => "http://download.jetbrains.com/python/pycharm-professional-5.0.1-jdk-bundled.dmg",
+      source   => "http://download.jetbrains.com/python/pycharm-professional-5.0.1-jdk-bundled.dmg";
     'PHPStorm':
       provider => 'appdmg',
-      source   => "http://download.jetbrains.com/webide/PhpStorm-9.0.dmg",
-    'PHPStorm':
+      source   => "http://download.jetbrains.com/webide/PhpStorm-9.0.dmg";
+    'Idea':
       provider => 'appdmg',
-      source   => "http://download.jetbrains.com/idea/ideaIU-15.0.1-custom-jdk-bundled.dmg",
+      source   => "http://download.jetbrains.com/idea/ideaIU-15.0.1-custom-jdk-bundled.dmg";
+    'iTerm':
+      flavor   => 'zip',
+      provider => 'compressed_app',
+      source   => "https://iterm2.com/downloads/beta/iTerm2-2_9_20151111.zip";
   }
 
   include vlc
@@ -78,7 +82,6 @@ class people::xcompass{
   include libpng
   include spf13vim3
   include vim
-  include iterm2:dev
 
   package { [
       'tmux', 
@@ -90,6 +93,7 @@ class people::xcompass{
       'reattach-to-user-namespace',
       'ncdu',
       'ffmpeg',
+      'redis',
     ]: }
 
 #  include go
@@ -115,6 +119,11 @@ class people::xcompass{
   include osx::finder::show_all_on_desktop
   include osx::finder::enable_quicklook_text_selection
   include osx::software_update
+  include osx::dock::icon_size
+
+  git::config::global { 'user.email':
+    value  => 'pan.luo@ubc.ca'
+  }
 
   $python_global = 2.7
   class { 'python::global':
@@ -124,12 +133,14 @@ class people::xcompass{
   python::package { "powerline for 2.7":
     package => 'powerline-status',
     python  => $python_global,
+    require => Class['python'],
   }
 
   # need by tmux powerline
   python::package { "psutil":
     package => 'psutil',
     python  => $python_global,
+    require => Class['python'],
   }
 
   $ruby_global = '2.1.2'
@@ -145,12 +156,12 @@ class people::xcompass{
   exec { 'setup iterm2 normal font':
     command => "/usr/libexec/PlistBuddy -c \"Set :'New Bookmarks':0:'Normal Font' '${powerline_font}'\" ~/Library/Preferences/com.googlecode.iterm2.plist",
     unless  => "/usr/libexec/PlistBuddy -c \"print :'New Bookmarks':0:'Normal Font'\" ~/Library/Preferences/com.googlecode.iterm2.plist | /usr/bin/grep '${powerline_font}'",
-    require => Python::Package['iTerm', 'powerline for 2.7'],
+    require => [Package['iTerm'], Python::Package['powerline for 2.7']],
   }
   exec { 'setup iterm2 non ascii font':
     command => "/usr/libexec/PlistBuddy -c \"Set :'New Bookmarks':0:'Non Ascii Font' '${powerline_font}'\" ~/Library/Preferences/com.googlecode.iterm2.plist",
     unless  => "/usr/libexec/PlistBuddy -c \"print :'New Bookmarks':0:'Non Ascii Font'\" ~/Library/Preferences/com.googlecode.iterm2.plist | /usr/bin/grep '${powerline_font}'",
-    require => Python::Package['iTerm', 'powerline for 2.7'],
+    require => [Package['iTerm'], Python::Package['powerline for 2.7']],
   }
 
   include projects::all
@@ -176,14 +187,4 @@ class people::xcompass{
   #}
 
   homebrew::tap { ['homebrew/dupes']: }
-
-  package { 'php54':}
-  package { ['php54-apc', 'php54-redis']: }
-  package {'redis': }
-
-  file { '/usr/bin/vi':
-    ensure => link,
-    target => '/opt/boxen/homebrew/bin/vim',
-    require => Package['vim']
-  }
 }

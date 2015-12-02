@@ -61,7 +61,6 @@ github "xquartz",     "1.2.1"
 # Optional/custom modules. There are tons available at
 # https://github.com/boxen.
 
-github 'iterm2'
 github "vlc"
 github "osx"
 github "virtualbox"
@@ -92,7 +91,7 @@ github "spf13vim3",   "1.0.0", :repo => "samjsharpe/puppet-spf13vim3"
 mod    "mosen/cups",        :git => "https://github.com/xcompass/puppet-cups.git"
 github "msoffice",    "1.0.0", :repo => "xcompass/puppet-msoffice"
 github "computrace",  "1.0.0", :repo => "xcompass/puppet-computrace"
-github "python",      "3.0.0", :repo => "mloberg/puppet-python"
+github "python",      "3.0.2", :repo => "mloberg/puppet-python"
 github "go"
 # github "elasticsearch", "2.8.0"
 # github "mysql",         "2.0.1"

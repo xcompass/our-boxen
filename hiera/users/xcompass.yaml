@@ -1,0 +1,5 @@
+boxen::personal::homebrew_packages:
+  - pstree
+  - htop
+
+gpgtools::version: '2015.09'

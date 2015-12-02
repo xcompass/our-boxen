@@ -1,18 +1,18 @@
 class people::xcompass{
  # install mac apps
   package {
-    'DiskWave':
-      source => "http://diskwave.barthe.ph/download/DiskWave_0.4.dmg",
-      provider => appdmg;
+    #'DiskWave':
+    #  source => "http://diskwave.barthe.ph/download/DiskWave_0.4.dmg",
+    #  provider => appdmg;
     'XMind':
       source => "http://www.xmind.net/xmind/downloads/xmind-macosx-3.4.1.201401221918.dmg",
       provider => appdmg;
-    'Haroopad':
-      source => "https://dl.dropbox.com/s/yvjb90ywib551ex/haroopad-v0.12.0.dmg",
-      provider => appdmg;
-    'GanttProject':
-      source => "http://dl.ganttproject.biz/ganttproject-2.6.6/ganttproject-2.6.6-r1715.dmg",
-      provider => appdmg;
+#    'Haroopad':
+#      source => "https://dl.dropbox.com/s/yvjb90ywib551ex/haroopad-v0.12.0.dmg",
+#      provider => appdmg;
+#    'GanttProject':
+#      source => "http://dl.ganttproject.biz/ganttproject-2.6.6/ganttproject-2.6.6-r1715.dmg",
+#      provider => appdmg;
 #    'Paintbrush':
 #      source => "http://downloads.sourceforge.net/paintbrush/Paintbrush-2.1.1.zip",
 #      provider => compressed_app;
@@ -22,15 +22,13 @@ class people::xcompass{
     'AndroidFileTransfer':
       source => "https://dl.google.com/dl/androidjumper/mtp/current/androidfiletransfer.dmg",
       provider => appdmg;
-    'SQLiteBrowser':
-      source   => 'https://github.com/sqlitebrowser/sqlitebrowser/releases/download/v3.5.1/sqlitebrowser-with_sqlcipher_support-3.5.1.dmg',
-      provider => appdmg;
+    #'SQLiteBrowser':
+    #  source   => 'https://github.com/sqlitebrowser/sqlitebrowser/releases/download/v3.5.1/sqlitebrowser-with_sqlcipher_support-3.5.1.dmg',
+    #  provider => appdmg;
     'FileZilla':
-      source   => 'http://downloads.sourceforge.net/project/filezilla/FileZilla_Client/3.10.3/FileZilla_3.10.3_macosx-x86.app.tar.bz2?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Ffilezilla%2Ffiles%2FFileZilla_Client%2F3.10.3%2F&ts=1428013991&use_mirror=iweb',
+      source   => 'http://downloads.sourceforge.net/project/filezilla/FileZilla_Client/3.11.0.2/FileZilla_3.11.0.2_macosx-x86.app.tar.bz2',
       flavor => 'tar.bz2',
       provider => compressed_app;
-    'ffmpeg':
-      ensure => present;
     'KeepPassX':
       source => 'https://www.keepassx.org/dev/attachments/download/72/KeePassX-2.0-alpha6.dmg',
       provider => appdmg;
@@ -41,20 +39,49 @@ class people::xcompass{
       source => 'http://downloads.sourceforge.net/chicken/Chicken-2.2b2.dmg',
       provider => appdmg;
     'OSXFuse':
-      source => 'http://downloads.sourceforge.net/project/osxfuse/osxfuse-2.7.5/osxfuse-2.7.5.dmg',
+      source => 'http://downloads.sourceforge.net/project/osxfuse/osxfuse-2.8.2/osxfuse-2.8.2.dmg',
       provider => pkgdmg;
     'Firefox':
-      source => 'http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/latest/mac/en-US/Firefox%2039.0.3.dmg',
+      source => 'https://download-installer.cdn.mozilla.net/pub/firefox/releases/42.0/mac/en-US/Firefox%2042.0.dmg',
       provider => 'appdmg';
     'Gnucash':
-      source => 'http://downloads.sourceforge.net/project/gnucash/gnucash%20%28stable%29/2.6.6/Gnucash-Intel-2.6.6-5.dmg',
+      source => 'http://downloads.sourceforge.net/project/gnucash/gnucash%20%28stable%29/2.6.9/Gnucash-Intel-2.6.9-1.dmg',
       provider => 'appdmg';
     'GIMP':
-      source => 'http://download.gimp.org/pub/gimp/v2.8/osx/gimp-2.8.14.dmg',
+      source => 'http://download.gimp.org/pub/gimp/v2.8/osx/gimp-2.9.2.dmg',
       provider => 'appdmg';
   }
 
-  package { ['tmux', 'autoenv', 'bash', 'wrk', 'gradle']: }
+  include vlc
+  include wget
+  include gpgtools
+  include adobe_reader
+  include evernote
+  include skype
+  include adium
+  include dropbox
+  include picasa
+  include dockutil
+  #include php::composer
+  include autoconf
+  include libtool
+  include pcre
+  include libpng
+  include spf13vim3
+  include vim
+
+  package { [
+      'tmux', 
+      'autoenv', 
+      'bash', 
+      'wrk', 
+      'gradle', 
+      'openconnect', 
+      'reattach-to-user-namespace',
+      'ncdu',
+      'ffmpeg',
+    ]: }
+
 #  include go
 #  go::version { '1.4': }
 
@@ -75,6 +102,9 @@ class people::xcompass{
   include osx::safari::enable_developer_mode
   include osx::no_network_dsstores
   include osx::disable_app_quarantine
+  include osx::finder::show_all_on_desktop
+  include osx::finder::enable_quicklook_text_selection
+  include osx::software_update
 
   $python_global = 2.7
   class { 'python::global':
@@ -120,5 +150,29 @@ class people::xcompass{
   file {'/etc/profile':
     ensure => present,
     source => 'puppet:///modules/people/profile'
+  }
+
+  dockutil::item {'Add iTerm':
+    item     => '/Applications/iTerm.app',
+    label    => 'iTerm',
+    action   => 'add',
+    position => 2,
+  }
+
+  # doesn't work
+  #php::extension::apc { "apc for 5.4.17":
+  #  php => '5.4.17',
+  #}
+
+  homebrew::tap { ['homebrew/dupes']: }
+
+  package { 'php54':}
+  package { ['php54-apc', 'php54-redis']: }
+  package {'redis': }
+
+  file { '/usr/bin/vi':
+    ensure => link,
+    target => '/opt/boxen/homebrew/bin/vim',
+    require => Package['vim']
   }
 }

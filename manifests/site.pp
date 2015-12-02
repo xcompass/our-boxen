@@ -94,13 +94,25 @@ node default {
   }
 
   # some common packages
-  include virtualbox
   include chrome
   include vagrant
   include phantomjs
   include mysql
   include msoffice
   include computrace
+
+  exec { 'Kill Virtual Box Processes':
+    command     => 'pkill "VBoxXPCOMIPCD" || true && pkill "VBoxSVC" || true && pkill "VBoxHeadless" || true',
+    path        => '/usr/bin:/usr/sbin:/bin:/usr/local/bin',
+    refreshonly => true,
+  }
+
+  package { "VirtualBox":
+    ensure   => installed,
+    provider => 'pkgdmg',
+    source   => "http://download.virtualbox.org/virtualbox/5.0.10/VirtualBox-5.0.10-104061-OSX.dmg",
+    require  => Exec['Kill Virtual Box Processes'],
+  }
 
   dockutil::item {'Add Chrome':
     item     => '/Applications/Google Chrome.app',

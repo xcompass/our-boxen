@@ -50,6 +50,15 @@ class people::xcompass{
     'GIMP':
       source => 'http://download.gimp.org/pub/gimp/v2.8/osx/gimp-2.9.2.dmg',
       provider => 'appdmg';
+    'PyCharm':
+      provider => 'appdmg',
+      source   => "http://download.jetbrains.com/python/pycharm-professional-5.0.1-jdk-bundled.dmg",
+    'PHPStorm':
+      provider => 'appdmg',
+      source   => "http://download.jetbrains.com/webide/PhpStorm-9.0.dmg",
+    'PHPStorm':
+      provider => 'appdmg',
+      source   => "http://download.jetbrains.com/idea/ideaIU-15.0.1-custom-jdk-bundled.dmg",
   }
 
   include vlc

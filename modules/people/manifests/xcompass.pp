@@ -130,6 +130,21 @@ class people::xcompass{
     version => $python_global
   }
 
+  python::package { "virtualenv for ${python_global}":
+    package => 'virtualenv',
+    python  => $python_global,
+  }
+
+  python::plugin { 'pyenv-virtualenv':
+    ensure => 'v20151103',
+    source => 'yyuu/pyenv-virtualenv',
+  }
+
+  python::plugin { 'pyenv-virtualenvwrapper':
+    ensure => 'v20140609',
+    source => 'yyuu/pyenv-virtualenvwrapper',
+  }
+
   python::package { "powerline for 2.7":
     package => 'powerline-status',
     python  => $python_global,
@@ -152,16 +167,22 @@ class people::xcompass{
     ruby_version => $ruby_global,
   }
 
-  $powerline_font = 'DejaVuSansMonoForPowerline 12'
+  $powerline_font = 'DejaVuSansMonoForPowerline 11'
+  $fonts="/Users/${::luser}/Library/Fonts"
+  file { "${powerline_font}":
+    ensure => 'present',
+    path   => "${fonts}/DejaVu Sans Mono for Powerline.ttf",
+    source => "puppet:///modules/people/DejaVu Sans Mono for Powerline.ttf"
+  }
   exec { 'setup iterm2 normal font':
     command => "/usr/libexec/PlistBuddy -c \"Set :'New Bookmarks':0:'Normal Font' '${powerline_font}'\" ~/Library/Preferences/com.googlecode.iterm2.plist",
     unless  => "/usr/libexec/PlistBuddy -c \"print :'New Bookmarks':0:'Normal Font'\" ~/Library/Preferences/com.googlecode.iterm2.plist | /usr/bin/grep '${powerline_font}'",
-    require => [Package['iTerm'], Python::Package['powerline for 2.7']],
+    require => [Package['iTerm'], Python::Package['powerline for 2.7'], File[$powerline_font]],
   }
   exec { 'setup iterm2 non ascii font':
     command => "/usr/libexec/PlistBuddy -c \"Set :'New Bookmarks':0:'Non Ascii Font' '${powerline_font}'\" ~/Library/Preferences/com.googlecode.iterm2.plist",
     unless  => "/usr/libexec/PlistBuddy -c \"print :'New Bookmarks':0:'Non Ascii Font'\" ~/Library/Preferences/com.googlecode.iterm2.plist | /usr/bin/grep '${powerline_font}'",
-    require => [Package['iTerm'], Python::Package['powerline for 2.7']],
+    require => [Package['iTerm'], Python::Package['powerline for 2.7'], File[$powerline_font]],
   }
 
   include projects::all

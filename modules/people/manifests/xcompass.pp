@@ -69,6 +69,7 @@ class people::xcompass{
   include libpng
   include spf13vim3
   include vim
+  include iterm2:dev
 
   package { [
       'tmux', 
@@ -135,12 +136,12 @@ class people::xcompass{
   exec { 'setup iterm2 normal font':
     command => "/usr/libexec/PlistBuddy -c \"Set :'New Bookmarks':0:'Normal Font' '${powerline_font}'\" ~/Library/Preferences/com.googlecode.iterm2.plist",
     unless  => "/usr/libexec/PlistBuddy -c \"print :'New Bookmarks':0:'Normal Font'\" ~/Library/Preferences/com.googlecode.iterm2.plist | /usr/bin/grep '${powerline_font}'",
-    require => Python::Package['powerline for 2.7'],
+    require => Python::Package['iTerm', 'powerline for 2.7'],
   }
   exec { 'setup iterm2 non ascii font':
     command => "/usr/libexec/PlistBuddy -c \"Set :'New Bookmarks':0:'Non Ascii Font' '${powerline_font}'\" ~/Library/Preferences/com.googlecode.iterm2.plist",
     unless  => "/usr/libexec/PlistBuddy -c \"print :'New Bookmarks':0:'Non Ascii Font'\" ~/Library/Preferences/com.googlecode.iterm2.plist | /usr/bin/grep '${powerline_font}'",
-    require => Python::Package['powerline for 2.7'],
+    require => Python::Package['iTerm', 'powerline for 2.7'],
   }
 
   include projects::all
@@ -157,6 +158,7 @@ class people::xcompass{
     label    => 'iTerm',
     action   => 'add',
     position => 2,
+    require  => Package['iTerm']
   }
 
   # doesn't work

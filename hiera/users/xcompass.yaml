@@ -1,5 +1,17 @@
 boxen::personal::homebrew_packages:
   - pstree
+  - tmux
+  - autoenv
+  - bash
+  - wrk
+  - gradle
+  - openconnect
+  - reattach-to-user-namespace
+  - ncdu
+  - ffmpeg
+  - redis
   - htop
 
 gpgtools::version: '2015.09'
+
+osx::dock::icon_size::size: 45

@@ -16,12 +16,13 @@ printers:
     location: 'IKBLC Room 102'
     uri: 'ipp://137.82.12.70/'
     #ppd: '/Library/Printers/PPDs/Contents/Resources/Xerox ColorQube 9203.gz'
-    ppd: '/Library/Printers/PPDs/Contents/Resources/Xerox WorkCentre 7845.gz'
-    ppd_options:
-      DefaultXRTrays: 'FiveTraysHCTT'
-      DefaultXRFinisher: 'SBFinisher'
-      DefaultXRHolePunch: '23Unit'
-      DefaultXRLanFax: 'True'
+    #ppd: '/Library/Printers/PPDs/Contents/Resources/Xerox WorkCentre 7845.gz'
+    model: 'Library/Printers/PPDs/Contents/Resources/Xerox WorkCentre 7845.gz Xerox WorkCentre 7845, 3.52.0'
+#    ppd_options: # lpoptions -p "CTLT_Photocopier_102" -l
+#      DefaultXRTrays: 'FiveTraysHCTT'
+#      DefaultXRFinisher: 'SBFinisher'
+#      DefaultXRHolePunch: '23Unit'
+#      DefaultXRLanFax: 'True'
 
 msoffice::username: ctlt
 msoffice::password: frogleg

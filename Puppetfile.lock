@@ -4,9 +4,9 @@ FORGE
     puppetlabs-stdlib (4.9.0)
 
 GIT
-  remote: https://github.com/xcompass/puppet-cups.git
+  remote: https://github.com/mosen/puppet-cups.git
   ref: master
-  sha: 46b474dcfdace5ae0bf0d1d4d9296fa0834e1287
+  sha: 34258ec86aae949ae1ce60a411b4dec8151a58c8
   specs:
     mosen-cups (1.4.1)
       puppetlabs-stdlib (>= 2.0.0)

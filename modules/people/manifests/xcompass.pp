@@ -83,19 +83,6 @@ class people::xcompass{
   include spf13vim3
   include vim
 
-  package { [
-      'tmux', 
-      'autoenv', 
-      'bash', 
-      'wrk', 
-      'gradle', 
-      'openconnect', 
-      'reattach-to-user-namespace',
-      'ncdu',
-      'ffmpeg',
-      'redis',
-    ]: }
-
 #  include go
 #  go::version { '1.4': }
 
@@ -120,6 +107,15 @@ class people::xcompass{
   include osx::finder::enable_quicklook_text_selection
   include osx::software_update
   include osx::dock::icon_size
+  boxen::osx_defaults { 'Dark Theme':
+    ensure => present,
+    domain => 'NSGlobalDomain',
+    key    => 'AppleInterfaceStyle',
+    type   => 'string',
+    value  => 'Dark',
+    user   => $::boxen_user;
+  }
+
 
   git::config::global { 'user.email':
     value  => 'pan.luo@ubc.ca'
@@ -168,6 +164,7 @@ class people::xcompass{
   }
 
   $powerline_font = 'DejaVuSansMonoForPowerline 11'
+  $powerline_font_non_ascii = 'DejaVuSansMonoForPowerline 10'
   $fonts="/Users/${::luser}/Library/Fonts"
   file { "${powerline_font}":
     ensure => 'present',
@@ -180,8 +177,8 @@ class people::xcompass{
     require => [Package['iTerm'], Python::Package['powerline for 2.7'], File[$powerline_font]],
   }
   exec { 'setup iterm2 non ascii font':
-    command => "/usr/libexec/PlistBuddy -c \"Set :'New Bookmarks':0:'Non Ascii Font' '${powerline_font}'\" ~/Library/Preferences/com.googlecode.iterm2.plist",
-    unless  => "/usr/libexec/PlistBuddy -c \"print :'New Bookmarks':0:'Non Ascii Font'\" ~/Library/Preferences/com.googlecode.iterm2.plist | /usr/bin/grep '${powerline_font}'",
+    command => "/usr/libexec/PlistBuddy -c \"Set :'New Bookmarks':0:'Non Ascii Font' '${powerline_font_non_ascii}'\" ~/Library/Preferences/com.googlecode.iterm2.plist",
+    unless  => "/usr/libexec/PlistBuddy -c \"print :'New Bookmarks':0:'Non Ascii Font'\" ~/Library/Preferences/com.googlecode.iterm2.plist | /usr/bin/grep '${powerline_font_non_ascii}'",
     require => [Package['iTerm'], Python::Package['powerline for 2.7'], File[$powerline_font]],
   }
 
@@ -208,4 +205,15 @@ class people::xcompass{
   #}
 
   homebrew::tap { ['homebrew/dupes']: }
+
+  # keyboard shortcuts
+  exec { 'Spotlight control+option+space':
+    command => "/usr/libexec/PlistBuddy -c \"Set :'AppleSymbolicHotKeys':64:'value':'parameters':2 '786432'\" ~/Library/Preferences/com.apple.symbolichotkeys.plist",
+    unless  => "/usr/libexec/PlistBuddy -c \"print :'AppleSymbolicHotKeys':64:'value':'parameters':2\" ~/Library/Preferences/com.apple.symbolichotkeys.plist | /usr/bin/grep '786432'",
+  }
+
+  exec { 'input source control+command+space':
+    command => "/usr/libexec/PlistBuddy -c \"Set :'AppleSymbolicHotKeys':60:'value':'parameters':2 '1310720'\" ~/Library/Preferences/com.apple.symbolichotkeys.plist && /usr/libexec/PlistBuddy -c \"Set :'AppleSymbolicHotKeys':60:'enabled' 'true'\" ~/Library/Preferences/com.apple.symbolichotkeys.plist",
+    unless  => "/usr/libexec/PlistBuddy -c \"print :'AppleSymbolicHotKeys':60:'value':'parameters':2\" ~/Library/Preferences/com.apple.symbolichotkeys.plist | /usr/bin/grep '1310720'",
+  }
 }

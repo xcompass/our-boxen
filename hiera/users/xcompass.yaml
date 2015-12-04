@@ -11,6 +11,7 @@ boxen::personal::homebrew_packages:
   - ffmpeg
   - redis
   - htop
+  - autoenv
 
 gpgtools::version: '2015.09'
 

@@ -1,7 +1,7 @@
 FORGE
   remote: https://forge.puppetlabs.com
   specs:
-    puppetlabs-stdlib (4.9.0)
+    puppetlabs-stdlib (4.10.0)
 
 GIT
   remote: https://github.com/mosen/puppet-cups.git
@@ -14,7 +14,7 @@ GIT
 GIT
   remote: https://github.com/xcompass/puppet-vim.git
   ref: master
-  sha: 3fffd1440f257035210140426b6b165b0ddc2a84
+  sha: 2cc4b72887fff851142e3a575d7f9ed380c28a45
   specs:
     xcompass-vim (0.0.1)
 
@@ -36,7 +36,7 @@ GITHUBTARBALL
 GITHUBTARBALL
   remote: boxen/puppet-boxen
   specs:
-    boxen (3.11.0)
+    boxen (3.11.1)
 
 GITHUBTARBALL
   remote: boxen/puppet-brewcask
@@ -206,7 +206,7 @@ GITHUBTARBALL
 GITHUBTARBALL
   remote: boxen/puppet-vagrant
   specs:
-    vagrant (3.3.3)
+    vagrant (3.3.4)
 
 GITHUBTARBALL
   remote: boxen/puppet-virtualbox
@@ -267,7 +267,7 @@ DEPENDENCIES
   adium (>= 0)
   adobe_reader (>= 0)
   autoconf (= 1.0.0)
-  boxen (= 3.11.0)
+  boxen (= 3.11.1)
   brewcask (= 0.0.6)
   chicken_of_the_vnc (>= 0)
   chrome (>= 0)

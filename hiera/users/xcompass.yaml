@@ -18,3 +18,5 @@ boxen::personal::homebrew_packages:
 gpgtools::version: '2015.09'
 
 osx::dock::icon_size::size: 45
+
+nodejs::nodenv::ensure: v0.4.0

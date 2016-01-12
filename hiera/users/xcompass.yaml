@@ -12,6 +12,8 @@ boxen::personal::homebrew_packages:
   - redis
   - htop
   - autoenv
+  - pandoc # for ubcpi release
+  - ngrep
 
 gpgtools::version: '2015.09'
 

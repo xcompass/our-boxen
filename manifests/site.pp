@@ -69,7 +69,7 @@ node default {
   }
   npm_module { 'bower for all nodes':
     module       => 'bower',
-    version      => '~> 1.4.1',
+    version      => '~> 1.7.0',
     node_version => '*',
   }
 

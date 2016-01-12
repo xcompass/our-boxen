@@ -159,6 +159,11 @@ GITHUBTARBALL
     phantomjs (3.0.0)
 
 GITHUBTARBALL
+  remote: boxen/puppet-php
+  specs:
+    php (2.0.1)
+
+GITHUBTARBALL
   remote: boxen/puppet-picasa
   specs:
     picasa (1.0.0)
@@ -294,6 +299,7 @@ DEPENDENCIES
   pcre (= 1.0.0)
   phantomjs (>= 0)
   phantomjs (>= 0)
+  php (>= 0)
   picasa (>= 0)
   pkgconfig (= 1.0.0)
   python (= 3.0.2)

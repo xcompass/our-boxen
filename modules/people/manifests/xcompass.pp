@@ -55,7 +55,7 @@ class people::xcompass{
       source   => "http://download.jetbrains.com/python/pycharm-professional-5.0.1-jdk-bundled.dmg";
     'PHPStorm':
       provider => 'appdmg',
-      source   => "http://download.jetbrains.com/webide/PhpStorm-9.0.dmg";
+      source   => "http://download.jetbrains.com/webide/PhpStorm-10.0.2.dmg";
     'Idea':
       provider => 'appdmg',
       source   => "http://download.jetbrains.com/idea/ideaIU-15.0.1-custom-jdk-bundled.dmg";
@@ -154,6 +154,8 @@ class people::xcompass{
     require => Class['python'],
   }
 
+  php::version {'5.6': }
+
   $ruby_global = '2.1.2'
   class { 'ruby::global':
     version => $ruby_global
@@ -215,5 +217,13 @@ class people::xcompass{
   exec { 'input source control+command+space':
     command => "/usr/libexec/PlistBuddy -c \"Set :'AppleSymbolicHotKeys':60:'value':'parameters':2 '1310720'\" ~/Library/Preferences/com.apple.symbolichotkeys.plist && /usr/libexec/PlistBuddy -c \"Set :'AppleSymbolicHotKeys':60:'enabled' 'true'\" ~/Library/Preferences/com.apple.symbolichotkeys.plist",
     unless  => "/usr/libexec/PlistBuddy -c \"print :'AppleSymbolicHotKeys':60:'value':'parameters':2\" ~/Library/Preferences/com.apple.symbolichotkeys.plist | /usr/bin/grep '1310720'",
+  }
+
+  # allow openconnect run without password
+  file { '/opt/boxen/homebrew/Cellar/openconnect/7.06/bin/openconnect':
+    owner => 'root',
+    group => 'wheel',
+    mode  => '4755',
+    require => Package['openconnect']
   }
 }

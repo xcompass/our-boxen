@@ -101,7 +101,7 @@ GITHUBTARBALL
 GITHUBTARBALL
   remote: boxen/puppet-homebrew
   specs:
-    homebrew (1.13.0)
+    homebrew (2.0.2)
 
 GITHUBTARBALL
   remote: boxen/puppet-hub
@@ -249,11 +249,6 @@ GITHUBTARBALL
     module_data (0.0.4)
 
 GITHUBTARBALL
-  remote: samjsharpe/puppet-spf13vim3
-  specs:
-    spf13vim3 (1.0.0)
-
-GITHUBTARBALL
   remote: xcompass/puppet-computrace
   specs:
     computrace (1.0.0)
@@ -282,7 +277,7 @@ DEPENDENCIES
   go (= 2.1.0)
   go (>= 0)
   gpgtools (>= 0)
-  homebrew (= 1.13.0)
+  homebrew (= 2.0.2)
   hub (= 1.4.1)
   inifile (= 1.4.1)
   libpng (= 1.0.0)
@@ -308,7 +303,6 @@ DEPENDENCIES
   repository (= 2.4.1)
   ruby (= 8.5.4)
   skype (>= 0)
-  spf13vim3 (= 1.0.0)
   stdlib (= 4.7.0)
   sudo (= 1.0.0)
   vagrant (>= 0)

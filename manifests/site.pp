@@ -123,7 +123,7 @@ node default {
 
   # install printer driver
   package {'xerox_driver':
-    source   => 'http://download.support.xerox.com/pub/drivers/CQ8570/drivers/macosx1010/ar/XeroxPrintDriver.3.64.0_1572.dmg',
+    source   => 'http://download.support.xerox.com/pub/drivers/CQ8570/drivers/macosx1010/ar/XeroxPrintDriver.3.68.0_1623.dmg',
     provider => 'pkgdmg'
   }
 

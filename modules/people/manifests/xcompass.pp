@@ -80,7 +80,7 @@ class people::xcompass{
   include libtool
   include pcre
   include libpng
-  include spf13vim3
+  #include spf13vim3
   include vim
 
 #  include go
@@ -121,7 +121,7 @@ class people::xcompass{
     value  => 'pan.luo@ubc.ca'
   }
 
-  $python_global = 2.7
+  $python_global = '2.7.10'
   class { 'python::global':
     version => $python_global
   }
@@ -154,12 +154,14 @@ class people::xcompass{
     require => Class['python'],
   }
 
-  php::version {'5.6': }
+  # use docker for php
+  #php::version {'5.6': }
 
-  $ruby_global = '2.1.2'
-  class { 'ruby::global':
-    version => $ruby_global
-  }
+  $ruby_global = '2.2.4'
+  # installed in site.pp
+  #class { 'ruby::global':
+  #  version => $ruby_global
+  #}
   ruby_gem { "tmuxinator":
     gem          => 'tmuxinator',
     ruby_version => $ruby_global,

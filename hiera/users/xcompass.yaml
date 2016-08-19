@@ -19,4 +19,4 @@ gpgtools::version: '2015.09'
 
 osx::dock::icon_size::size: 45
 
-nodejs::nodenv::ensure: v0.4.0
+nodejs::nodenv::ensure: v1.0.0

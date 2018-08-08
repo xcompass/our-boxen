@@ -1,15 +1,18 @@
 FORGE
   remote: https://forge.puppetlabs.com
   specs:
-    puppetlabs-stdlib (4.11.0)
+    puppetlabs-stdlib (4.15.0)
+    puppetlabs-xinetd (2.0.0)
+      puppetlabs-stdlib (< 5.0.0, >= 4.6.0)
 
 GIT
   remote: https://github.com/mosen/puppet-cups.git
   ref: master
-  sha: 34258ec86aae949ae1ce60a411b4dec8151a58c8
+  sha: cd4576f4988cbb7546e7c52ef6c13c9b4edab97e
   specs:
     mosen-cups (1.4.1)
       puppetlabs-stdlib (>= 2.0.0)
+      puppetlabs-xinetd (>= 1.5.0)
 
 GIT
   remote: https://github.com/xcompass/puppet-vim.git
@@ -41,7 +44,7 @@ GITHUBTARBALL
 GITHUBTARBALL
   remote: boxen/puppet-brewcask
   specs:
-    brewcask (0.0.6)
+    brewcask (0.0.7)
 
 GITHUBTARBALL
   remote: boxen/puppet-chicken_of_the_vnc
@@ -56,7 +59,7 @@ GITHUBTARBALL
 GITHUBTARBALL
   remote: boxen/puppet-dnsmasq
   specs:
-    dnsmasq (2.0.1)
+    dnsmasq (2.0.2)
 
 GITHUBTARBALL
   remote: boxen/puppet-dockutil
@@ -86,7 +89,7 @@ GITHUBTARBALL
 GITHUBTARBALL
   remote: boxen/puppet-git
   specs:
-    git (2.9.0)
+    git (2.11.0)
 
 GITHUBTARBALL
   remote: boxen/puppet-go
@@ -101,12 +104,12 @@ GITHUBTARBALL
 GITHUBTARBALL
   remote: boxen/puppet-homebrew
   specs:
-    homebrew (2.0.2)
+    homebrew (2.1.0)
 
 GITHUBTARBALL
   remote: boxen/puppet-hub
   specs:
-    hub (1.4.3)
+    hub (1.4.4)
 
 GITHUBTARBALL
   remote: boxen/puppet-libpng
@@ -121,7 +124,7 @@ GITHUBTARBALL
 GITHUBTARBALL
   remote: boxen/puppet-mysql
   specs:
-    mysql (2.2.2)
+    mysql (2.2.3)
 
 GITHUBTARBALL
   remote: boxen/puppet-nginx
@@ -131,7 +134,7 @@ GITHUBTARBALL
 GITHUBTARBALL
   remote: boxen/puppet-nodejs
   specs:
-    nodejs (5.0.5)
+    nodejs (5.0.9)
 
 GITHUBTARBALL
   remote: boxen/puppet-openssl
@@ -263,22 +266,22 @@ DEPENDENCIES
   adobe_reader (>= 0)
   autoconf (= 1.0.0)
   boxen (= 3.11.1)
-  brewcask (= 0.0.6)
+  brewcask (= 0.0.7)
   chicken_of_the_vnc (>= 0)
   chrome (>= 0)
   computrace (= 1.0.0)
-  dnsmasq (= 2.0.1)
+  dnsmasq (= 2.0.2)
   dockutil (>= 0)
   dropbox (>= 0)
   evernote (>= 0)
   foreman (= 1.2.0)
   gcc (= 3.0.2)
-  git (= 2.9.0)
+  git (= 2.11.0)
   go (= 2.1.0)
   go (>= 0)
   gpgtools (>= 0)
-  homebrew (= 2.0.2)
-  hub (= 1.4.3)
+  homebrew (= 2.1.0)
+  hub (= 1.4.4)
   inifile (= 1.4.1)
   libpng (= 1.0.0)
   libtool (= 1.0.0)
@@ -287,7 +290,7 @@ DEPENDENCIES
   msoffice (= 1.0.0)
   mysql (>= 0)
   nginx (= 1.7.0)
-  nodejs (= 5.0.5)
+  nodejs (= 5.0.9)
   openssl (= 1.0.0)
   osx (>= 0)
   osxfuse (>= 0)
